@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background-color: black;
+  color: white;
+  overflow-x: hidden;
+}
+
+.space-bg {
+  height: 100vh;
+  background: url("./assets/space-bg.png") no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+.animate-orbit {
+  animation: orbit 1s linear;
+}
+
+@keyframes orbit {
+  0% {
+
+  }
+}
