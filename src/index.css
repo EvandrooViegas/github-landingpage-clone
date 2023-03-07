@@ -3,24 +3,92 @@
 @tailwind utilities;
 
 body {
-  background-color: black;
+  background-color: #0d1117;
   color: white;
   overflow-x: hidden;
 }
 
+
 .space-bg {
   height: 100vh;
-  background: url("./assets/space-bg.png") no-repeat;
+  background: url("./assets/space-bg1.png") no-repeat;
   background-position: center center;
   background-size: cover;
 }
 
-.animate-orbit {
-  animation: orbit 1s linear;
+.bottom-shadow:hover {
+  transition: .3s linear;
+  box-shadow: 0px 3px 80px  rgba(255, 255, 255, 0.527);
 }
 
-@keyframes orbit {
-  0% {
+.animation-resize-height {
+  animation: resizeHeight .5s linear;
+  height: 300px;
+}
 
+.active-section {
+  position: relative;
+}
+
+.unactive-section:hover {
+  position: relative;
+  @apply text-blue-400;
+  
+}
+.unactive-section::after {
+  position: absolute;
+  transition: width 3s;
+
+  height: 1.3px;
+  margin: auto;
+  bottom: -10px;
+  left: 0px;
+  right: 0px;
+  width: 0px;
+}
+.unactive-section:hover::after {
+  content: "";
+  width: 70%;
+  @apply bg-blue-400;
+
+}
+.active-section::after {
+  content: "";
+  position: absolute;
+  height: 1.3px;
+  margin: auto;
+  bottom: -10px;
+  left: 0px;
+  right: 0px;
+  width: 70%;
+  background-color: white;
+}
+
+.underline-animation {
+  position: relative;
+}
+.underline-animation::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 0px;
+  right: 0px;
+  width: 0px;
+  height: 3px;
+  transition: 0.3s all;
+  background-color: white;
+}
+
+.underline-animation:hover::after {
+  width: 100%;
+}
+
+@keyframes resizeHeight {
+  from {
+    height: 0px;
   }
+  to {
+    height: 300px;
+  }
+  
 }

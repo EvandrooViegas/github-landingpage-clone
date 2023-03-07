@@ -11,6 +11,18 @@ export const Button = styled("button", {
             },
             grayBg: {
                 background: "#1b2226"
+            },
+            whiteBg: {
+                background: "White",
+                color: "Black"
+            },
+            purpleOutline: {
+                border: "1px solid #bc8cff"
+            }
+        },
+        rounded: {
+            md: {
+                borderRadius: "5px"
             }
         }
     }
