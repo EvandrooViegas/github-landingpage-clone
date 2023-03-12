@@ -19,11 +19,9 @@ export default function useObserver({ target, options = {}, onObserve, onUnObser
 
     useEffect(() => {
         const element = (() => {
-            if(typeof target === "string") {
-                return document.getElementById(target)
-            } else {
-                return target
-            }
+            if(typeof target === "string") return document.getElementById(target)
+            else return target
+            
         })()
         element && oberver.observe(element!)
         return () => {

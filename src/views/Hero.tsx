@@ -1,16 +1,16 @@
-import { BsCode } from "react-icons/bs"
+
 import { HiArrowSmRight } from "react-icons/hi"
 import GradientBar from "../components/GradientBar"
 import ShadowIcon from "../components/ShadowIcon"
-import { RxBackpack } from "react-icons/rx"
 import { Button } from "../components/sticthes/Button"
-
 import stripeIcon from "../assets/stripe.svg"
 import pinterestIcon from "../assets/pinterest.svg"
 import kpmgIcon from "../assets/kpmg.svg"
 import mercedesIcon from "../assets/mercedes.svg"
 import pgIcon from "../assets/pg.svg"
 import telusIcon from "../assets/telus.svg"
+
+import { RiCodeFill } from "react-icons/ri"
 
 export default function Hero() {
 
@@ -28,7 +28,7 @@ export default function Hero() {
             </div>
            
             <div className="flex justify-center">
-                <ShadowIcon><BsCode size={25} /></ShadowIcon>
+                <ShadowIcon color="#dd7df7"><RiCodeFill  /></ShadowIcon>
             </div>
 
             <div className="flex flex-col gap-3 md:flex-row md:gap-4">

@@ -1,9 +1,10 @@
-import { motion } from "framer-motion"
+import { AnimatePresence, motion } from "framer-motion"
 import { Hero, Productivity } from "./views/index";
 import { Navbar } from "./components/index";
 import { useCurrentSection, useObserver } from "./hooks";
 import { ISections } from "./context/CurrentSection";
 import SectionBar from "./components/SectionBar";
+import Collaboration from "./views/Collaboration";
 
 export default function App() {
   const currentSectionTarget:ISections = "home"
@@ -18,12 +19,17 @@ export default function App() {
 
       <main className="space-bg">
         <Navbar />
-        {showSectionBar && <SectionBar />}
+        <AnimatePresence>
+            {showSectionBar && (
+              <SectionBar />
+            )}
+        </AnimatePresence>
         <FloatingImage />
         <div id={currentSectionTarget}></div>
-        <main className="md:ml-4 md:mt-14 m-4 grid grid-cols-[1fr_14fr] gap-y-[1rem] gap-x-4 md:gap-x-0 justify-center">
+        <main className="md:ml-4 md:mt-14 m-4 grid grid-cols-[1fr_14fr] gap-y-[1rem]  gap-x-4 md:gap-x-0 justify-center">
           <Hero />
           <Productivity />
+          <Collaboration />
         </main>
       </main>
 
