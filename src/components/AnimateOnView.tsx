@@ -1,13 +1,16 @@
 
-import  { useRef, useState } from "react"
-import { AnimationControls, motion, TargetAndTransition, VariantLabels } from "framer-motion"
+import  { useRef, useState, HTMLAttributes } from "react"
+import { AnimationControls, motion, TargetAndTransition } from "framer-motion"
 import { useObserver } from "../hooks"
 
-type Animate = boolean | AnimationControls | TargetAndTransition | VariantLabels 
-interface IProps {
+
+type Animate =  AnimationControls | TargetAndTransition  
+type IProps =  HTMLAttributes<HTMLDivElement> & Animate & {
     children: JSX.Element,
     animate?:  Animate
-    beforeAnimate?: Animate
+    beforeAnimate?: Animate,
+    onView?: () => void
+
 }
 
 const defaultAnimate:Animate  = {
@@ -19,14 +22,15 @@ const defaultAnimate:Animate  = {
 }
 
 const defaultBeforeAnimate:Animate = {
-    
     opacity: 0
 }
 
 export default function AnimateOnView({ 
     children,
     animate = defaultAnimate,
-    beforeAnimate = defaultBeforeAnimate
+    beforeAnimate = defaultBeforeAnimate,
+    onView,
+    ...props
 }:IProps ) {
   const elementToAnimateId = useRef(`element-target-${Math.random()}`)
   const [isAniamte, setIsAnimate] = useState(false)
@@ -34,13 +38,14 @@ export default function AnimateOnView({
     target: elementToAnimateId.current,
     onObserve() {
         setIsAnimate(true)
+        onView?.()
     },
     onUnObserve() {
         setIsAnimate(false)
     },
   })
   return (
-    <motion.div id={elementToAnimateId.current} animate={isAniamte ? animate : beforeAnimate}>
+    <motion.div {...props} id={elementToAnimateId.current} animate={isAniamte ? animate : beforeAnimate}>
         { children }
     </motion.div>
   )

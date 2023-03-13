@@ -5,6 +5,9 @@ import { useCurrentSection, useObserver } from "./hooks";
 import { ISections } from "./context/CurrentSection";
 import SectionBar from "./components/SectionBar";
 import Collaboration from "./views/Collaboration";
+import Security from "./views/Security";
+import Footer from "./views/Footer";
+import Galaxy from "./views/Galaxy";
 
 export default function App() {
   const currentSectionTarget:ISections = "home"
@@ -30,7 +33,10 @@ export default function App() {
           <Hero />
           <Productivity />
           <Collaboration />
+          <Security />
         </main>
+        <Galaxy />
+        <Footer />
       </main>
 
   )

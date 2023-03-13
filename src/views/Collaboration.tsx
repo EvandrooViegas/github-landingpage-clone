@@ -3,6 +3,8 @@ import GradientBar from "../components/GradientBar";
 import { motion } from "framer-motion";
 //icons
 import { CgShoppingBag } from "react-icons/cg";
+import { AiOutlineHeart } from "react-icons/ai";
+import { TfiBag } from "react-icons/tfi";
 //assets
 import issuesPlanImg from "../assets/issues-plan.webp";
 import projectsImg from "../assets/projects.png";
@@ -24,9 +26,8 @@ import samuelImg from "../assets/imolorhe.webp";
 import sindresorhusImg from "../assets/sindresorhus.webp";
 import dayhaysosImg from "../assets/dayhaysoos.webp";
 import prophenImg from "../assets/prophen.webp";
-import { AiOutlineHeart } from "react-icons/ai";
 import AnimateOnView from "../components/AnimateOnView";
-import { TfiBag } from "react-icons/tfi";
+import Empty from "../components/Empty";
 export default function Collaboration() {
   const triggerElementTarget = "trigger-section";
   const imageTarget = "trigger-image-adasdasdqwdawdsad";
@@ -68,7 +69,7 @@ export default function Collaboration() {
         color="#0d1117, #ea6045, #ffa28b"
         animateWhen={isObservingImage}
       /> 
-      <div></div>
+      <Empty />
       {/* ROW 2 */}
       
       <GradientBar
@@ -84,7 +85,7 @@ export default function Collaboration() {
         }}
       /> 
       <div>
-        <motion.p
+        <motion.span
           id={triggerElementTarget}
           className="text-2xl font-semibold"
           animate={
@@ -100,7 +101,7 @@ export default function Collaboration() {
           }
         >
           Collaboration
-        </motion.p>
+        </motion.span>
         <motion.p
           className="font-semibold text-2xl md:text-5xl md:w-[85%]"
           animate={
@@ -131,9 +132,9 @@ export default function Collaboration() {
         <GradientBar color="#0d1117, #ea6045, #ea6045" />
        </div>
 
-      <div className="grid grid-cols-2 items-center md:ml-20">
+      <div className="relative md:grid grid-cols-2 md:gap-4 items-center md:ml-20">
         <AnimateOnView animate={{ x: [30, 0], opacity: [0, 1], transition: { ease: "easeIn" } }}>
-          <div>
+          <div className="mt-[15rem] md:mt-0">
             <p className="text-2xl font-semibold">
               <span className="text-[#ffa28b]">
                 GitHub Issues and GitHub Projects
@@ -144,9 +145,18 @@ export default function Collaboration() {
             <HoverBtn>Explore Github Issues</HoverBtn>
           </div>
         </AnimateOnView>
-        <AnimateOnView animate={{ y: [30, 0], opacity: [0, 1], transition: { ease: "easeIn" } }}> 
+        {/* IMAGE RES */}
+        {/* MD */}
+        <AnimateOnView animate={{ y: [30, 0], opacity: [0, 1], transition: { ease: "easeIn" } }} className="hidden md:flex"> 
           <img
             className="w-[90%] border-[1px] border-black rounded-xl -translate-y-[80px]"
+            src={projectsImg}
+          />
+        </AnimateOnView>
+        {/* SM */}
+        <AnimateOnView animate={{ opacity: [0, 1], transition: { ease: "easeIn" } }} className="flex md:hidden"> 
+          <img
+            className="absolute -top-[30rem]  border-[1px] border-black rounded-xl -translate-y-[80px]"
             src={projectsImg}
           />
         </AnimateOnView>
@@ -193,7 +203,7 @@ export default function Collaboration() {
           in onboarding time with Github
         </p>
       </motion.div>
-      <div className="col-span-2 grid md:grid-cols-2 gap-[1rem]">
+      <div className="col-span-2 flex flex-col md:grid md:grid-cols-2 gap-[1rem]">
         <MovingCard color="#ea6045">
           <>
             <div className="flex flex-col justify-between gap-4 py-10 px-6 md:p-14">
@@ -225,10 +235,10 @@ export default function Collaboration() {
         </MovingCard>
         <div className="col-span-2">
           <MovingCard color="#ea6045">
-            <div className="grid grid-cols-2 items-center ">
+            <div className="md:grid md:grid-cols-2 items-center ">
               <div className="flex flex-col justify-between gap-4 py-10 px-6 h-full md:p-14">
                 <p className="text-neutral-400 font-semibold text-2xl md:w-[85%]">
-                  <span className="text-white ">GitHub Sponsors</span>
+                  <span className="text-white ">GitHub Sponsors </span>
                   lets you support your favorite open souce maintainers and
                   projects
                 </p>
@@ -259,7 +269,7 @@ function RotatedSponsors() {
     { name: "prophen", img: prophenImg },
   ];
   return (
-    <div className="absolute left-32 -top-24 grid grid-cols-3 gap-8 -rotate-[20deg]">
+    <div className="absolute grid -right-40 top-0 grid-cols-2 md:left-32 md:-top-24  md:grid-cols-3 gap-8 -rotate-[20deg]">
       {sponsors.map(({ name, img}, idx) => (
         <AnimateOnView key={idx} animate={{
             opacity:  [0, 1],
@@ -270,7 +280,7 @@ function RotatedSponsors() {
             }
         }}>
           <div
-            className="flex-v flex-col gap-3 border-[1px] border-neutral-800 rounded-lg px-8 py-6"
+            className="flex-v flex-col gap-3 border-[1px] border-neutral-700 rounded-lg px-8 py-6 bg-[#161b22]"
             key={name}
           >
             <img src={img} className="w-24 rounded-full" />

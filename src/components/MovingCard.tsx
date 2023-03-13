@@ -1,13 +1,13 @@
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useRef, useState, HTMLAttributes } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 //@ts-ignore
 import Tilt from "react-tilt"
-interface IProps {
-    children: JSX.Element,
+interface IProps extends HTMLAttributes<HTMLDivElement> {
+    children: React.ReactNode,
     color?: string,
-    size?: number 
+    size?: number
 }
-export default function MovingCard({ children, color = "green", size = 50 }:IProps) {
+export default function MovingCard({ children, color = "green", size = 50, ...props }:IProps) {
 
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
     const [showShadow, setShowShadow] = useState(false)
@@ -27,7 +27,7 @@ export default function MovingCard({ children, color = "green", size = 50 }:IPro
         });
     }
     return (
-        <Tilt className="Tilt overflow-hidden rounded-xl" options={{
+        <Tilt className="Tilt overflow-hidden rounded-xl" {...props} options={{
             reverse:        false,  // reverse the tilt direction
             max:            6,     // max tilt rotation (degrees)
             perspective:    2000,   // Transform perspective, the lower the more extreme the tilt gets.

@@ -15,6 +15,14 @@ body {
   top: 50%;
   transform: translateY(-50%);
 }
+.center-v {
+  top: 50%;
+  transform: translateY(-50%);
+}
+.center-h {
+  left: 50%;
+  transform: translateX(-50%);
+}
 .flex-center {
   display: flex;
   justify-content: center;
@@ -39,7 +47,12 @@ body {
   background-position: center center;
   background-size: cover;
 }
-
+.footer-galaxy {
+  height: 100vh;
+  background: url("./assets/footer-galaxy.webp") no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
 
 /* Section */
 .active-section {
